@@ -1,0 +1,39 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KaamSetu</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --bg: #000000; --surface: #121212; --surface-light: #1e1e1e; --primary: #bb86fc; --accent: #03dac6; --text: #ffffff; --text-dim: #b3b3b3; --border-radius: 16px; }
+        body { margin:0; padding-bottom:100px; font-family:'Inter', sans-serif; background:var(--bg); color:var(--text); }
+        a { text-decoration:none; color:inherit; }
+        .glow-card { background: var(--surface); border: 1px solid #333; border-radius: var(--border-radius); padding: 20px; margin-bottom: 15px; position: relative; overflow: hidden; }
+        .header { padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 50; border-bottom: 1px solid #222; }
+        .bottom-bar { position: fixed; bottom: 20px; left: 20px; right: 20px; height: 65px; background: #1a1a1a; border-radius: 40px; display: flex; justify-content: space-around; align-items: center; border: 1px solid #333; box-shadow: 0 10px 30px rgba(0,0,0,0.8); z-index: 100; }
+        .nav-icon { color: #555; font-size: 22px; transition: 0.3s; padding: 10px; border-radius: 50%; }
+        .nav-icon.active { color: var(--bg); background: var(--accent); transform: translateY(-5px); }
+        .btn-primary { background: var(--primary); color: #000; font-weight: bold; width: 100%; padding: 16px; border: none; border-radius: 12px; font-size: 16px; cursor: pointer; text-transform: uppercase; }
+        .dark-input { width: 100%; background: var(--surface-light); border: 1px solid #333; padding: 15px; color: white; border-radius: 12px; margin-bottom: 15px; box-sizing: border-box; font-size: 16px; }
+        .section-header { font-size: 20px; font-weight: 800; margin: 25px 24px 15px; }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+    {% if active %}
+    <nav class="bottom-bar">
+        {% if session.get('role') == 'provider' %}
+             <a href="/provider" class="nav-icon {{ 'active' if active == 'home' else '' }}"><i class="fas fa-briefcase"></i></a>
+        {% else %}
+            <a href="/home" class="nav-icon {{ 'active' if active == 'home' else '' }}"><i class="fas fa-home"></i></a>
+            <a href="/bookings" class="nav-icon {{ 'active' if active == 'bookings' else '' }}"><i class="fas fa-receipt"></i></a>
+        {% endif %}
+        <a href="/profile" class="nav-icon {{ 'active' if active == 'profile' else '' }}"><i class="fas fa-user"></i></a>
+    </nav>
+    {% endif %}
+    <div onclick="window.location.reload()" style="position:fixed; bottom:100px; right:20px; width:40px; height:40px; background:#222; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid #444; z-index:99;">
+        <i class="fas fa-sync-alt"></i>
+    </div>
+</body>
+</html>

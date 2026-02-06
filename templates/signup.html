@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding:40px 24px; min-height:100vh;">
+    <h1 style="font-size:28px; font-weight:900; margin-bottom:30px;">Sign Up</h1>
+    <form action="/signup" method="POST">
+        <label style="color:var(--text-dim); display:block; margin-bottom:10px;">I am a...</label>
+        <div style="display:flex; gap:10px; margin-bottom:20px;">
+            <label style="flex:1;"><input type="radio" name="role" value="user" checked> Customer</label>
+            <label style="flex:1;"><input type="radio" name="role" value="provider"> Worker</label>
+        </div>
+        <input type="text" name="name" placeholder="Full Name" class="dark-input" required>
+        <input type="number" name="phone" placeholder="Phone Number" class="dark-input" required>
+        <input type="password" name="password" placeholder="Password" class="dark-input" required>
+        <button type="submit" class="btn-primary" style="background:var(--accent);">Create Account</button>
+    </form>
+    <div style="text-align:center; margin-top:20px;"><a href="/login" style="color:var(--text-dim);">Back to Login</a></div>
+</div>
+{% endblock %}

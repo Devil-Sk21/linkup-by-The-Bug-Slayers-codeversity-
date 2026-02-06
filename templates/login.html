@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding:40px 24px; height:100vh; display:flex; flex-direction:column; justify-content:center;">
+    <h1 style="font-size:32px; font-weight:900; margin-bottom:10px;">LinkUp</h1>
+    <p style="color:var(--text-dim); margin-bottom:40px;">Sign in to KaamSetu (Module 1)</p>
+    {% if error %} <div style="color:#ff6b6b; margin-bottom:20px;">{{ error }}</div> {% endif %}
+    <form action="/login" method="POST">
+        <input type="number" name="phone" placeholder="Phone Number" class="dark-input" required>
+        <input type="password" name="password" placeholder="Password" class="dark-input" required>
+        <button type="submit" class="btn-primary">Login</button>
+    </form>
+    <div style="text-align:center; margin-top:30px;"><a href="/signup" style="color:var(--accent);">Create Account</a></div>
+</div>
+{% endblock %}

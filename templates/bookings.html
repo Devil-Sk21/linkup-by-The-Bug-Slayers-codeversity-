@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding:24px;">
+    <h1>My Bookings</h1>
+    {% for booking in bookings %}
+    <div class="glow-card">
+        <div style="font-size:18px; font-weight:bold;">{{ booking.service_name }}</div>
+        <div style="color:var(--text-dim); font-size:13px; margin:5px 0;">{{ booking.address }}</div>
+        <div style="display:flex; justify-content:space-between; margin-top:10px; font-weight:bold;">
+            <span>{{ booking.price }}</span>
+            {% if booking.status=='Pending' %}
+            <span style="color:#ffff00;">{{ booking.status }}</span>
+            {% else %}
+            <span style="color:#03dac6;">{{ booking.status }}</span>
+            {% endif %}
+        </div>
+    </div>
+    {% else %}
+    <p style="text-align:center; color:var(--text-dim);">No bookings yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

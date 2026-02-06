@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div style="padding:24px;">
+    <h1>Provider Dashboard</h1>
+    <div class="section-header" style="color:var(--accent);">Live Requests</div>
+    {% for job in pending %}
+    <div class="glow-card" style="border-color:var(--text-dim); opacity:0.8;">
+        <div style="display:flex; justify-content:space-between;">
+             <div style="font-weight:bold; font-size:18px;">{{ job.service_name }}</div>
+             <div style="background:#333; color:#aaa; font-size:10px; padding:4px 8px; border-radius:4px;">VERIFY ID</div>
+        </div>
+        <div style="color:var(--text-dim); margin-bottom:15px; font-size:13px;">{{ job.address }}</div>
+        
+        <button onclick="alert('⚠️ Provider Verification Pending\n\nYou must upload your Aadhar Card to accept jobs. (Feature disabled for Demo)')" style="width:100%; background:#333; color:#777; padding:12px; border:none; border-radius:8px; font-weight:bold; cursor:not-allowed;">
+            <i class="fas fa-lock"></i> Accept Job (Locked)
+        </button>
+    </div>
+    {% endfor %}
+    <div class="section-header">My Active Jobs</div>
+    <div style="text-align:center; padding:20px; color:var(--text-dim);">No active jobs</div>
+</div>
+{% endblock %}
